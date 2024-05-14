@@ -151,5 +151,5 @@ Secure Download Links: Implement unique, time-limited tokens for download links 
 Inform Users: Clearly inform users that the documents are watermarked in your terms and conditions to comply with legal and privacy regulations.
 
 ## Acknowledgements
-PyMuPDF: A Python binding for MuPDF, a lightweight PDF viewer.
-Flask: A lightweight WSGI web application framework in Python.
+- PyMuPDF: A Python binding for MuPDF, a lightweight PDF viewer.
+- Flask: A lightweight WSGI web application framework in Python.
