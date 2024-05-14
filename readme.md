@@ -45,3 +45,7 @@ This project provides an automated system for:
 ```bash
 git clone https://github.com/yourusername/pdf-watermarking-system.git
 cd pdf-watermarking-system
+
+2. **Install Dependancies**
+'''bash
+pip install -r requirements.txt
