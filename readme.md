@@ -54,7 +54,7 @@ cd pdf-watermarking-system
 ```bash
 pip install -r requirements.txt
 ```
-3. **Usage**
+## Usage
    Generate Hash and Add Invisible Watermark
 The script watermark.py contains the function to generate a unique hash and add an invisible watermark to a PDF.
 
@@ -93,5 +93,63 @@ email = "buyer@example.com"
 input_pdf = "input_book.pdf"
 output_pdf = "watermarked_book.pdf"
 add_invisible_watermark(input_pdf, email, output_pdf)
+```
+
+## Running the Flask Server
+The 'app.py' file contains the Flask server setup
+
+```python
+from flask import Flask, request, send_file
+import os
+from watermark import add_invisible_watermark
+
+app = Flask(__name__)
+
+@app.route('/purchase', methods=['POST'])
+def purchase():
+    email = request.form['email']
+    input_pdf = "input_book.pdf"
+    output_pdf = f"watermarked_books/{email}.pdf"
+    
+    # Ensure output directory exists
+    os.makedirs(os.path.dirname(output_pdf), exist_ok=True)
+    
+    # Add watermark
+    add_invisible_watermark(input_pdf, email, output_pdf)
+    
+    # Generate download link (example link, you might use a more secure method)
+    download_link = f"http://yourdomain.com/download/{email}.pdf"
+    
+    # Send the download link to the user (via email or directly in response)
+    return {"download_link": download_link}
+
+@app.route('/download/<email>.pdf', methods=['GET'])
+def download(email):
+    output_pdf = f"watermarked_books/{email}.pdf"
+    return send_file(output_pdf, as_attachment=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 ```
+
+## Running the Flask server
+
+1. **Run the Flask server:**
+
+```
+   python app.py
+```
+The server will start on http://127.0.0.1:5000/
+
+## Deployment
+
+Deploy the Flask application on a hosting service like Heroku, AWS, or any other cloud provider. Ensure the output directory for watermarked PDFs is secure and properly managed.
+
+## Security Considerations
+Secure Download Links: Implement unique, time-limited tokens for download links to ensure that only the purchaser can access their watermarked PDF.
+Inform Users: Clearly inform users that the documents are watermarked in your terms and conditions to comply with legal and privacy regulations.
+
+##Acknowledgements
+PyMuPDF: A Python binding for MuPDF, a lightweight PDF viewer.
+Flask: A lightweight WSGI web application framework in Python.
