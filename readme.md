@@ -147,8 +147,8 @@ The server will start on http://127.0.0.1:5000/
 Deploy the Flask application on a hosting service like Heroku, AWS, or any other cloud provider. Ensure the output directory for watermarked PDFs is secure and properly managed.
 
 ## Security Considerations
-Secure Download Links: Implement unique, time-limited tokens for download links to ensure that only the purchaser can access their watermarked PDF.
-Inform Users: Clearly inform users that the documents are watermarked in your terms and conditions to comply with legal and privacy regulations.
+- Secure Download Links: Implement unique, time-limited tokens for download links to ensure that only the purchaser can access their watermarked PDF.
+- Inform Users: Clearly inform users that the documents are watermarked in your terms and conditions to comply with legal and privacy regulations.
 
 ## Acknowledgements
 - PyMuPDF: A Python binding for MuPDF, a lightweight PDF viewer.
